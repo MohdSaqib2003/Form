@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Form</title>
+    <style>
+        *{
+            padding:0px;
+            margin: 0px;
+        }
+        .heading{
+            background-color: tomato;
+            text-align: center;
+            padding: 7px;
+        }
+        .error,.error2,.error3 {
+            color: #bf2615;
+            font-weight: bold;
+        }
+/* 
+         {
+            color: #bf2615;
+            font-weight: bold;
+        } */
+
+        #second,#third {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1 class="heading"> Internship Task </h1>
+
+    <div class="container">
+        <form action="">
+
+        <div id="first">
+            <h3 class="h3">Account Information</h3>
+            <hr /> <br>
+            <label class="fw-bold" for="username">Username</label>
+            <input type="text" class="form-control" id="username" placeholder="username" onchange="validate1()">
+            <span class="error"></span><br />
+
+            <label class="fw-bold" for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password" onchange="validate1()">
+            <span class="error"></span><br />
+
+            <label class="fw-bold" for="con_password">Confirm password</label>
+            <input type="password" class="form-control" id="con_password" placeholder="Password" onchange="validate1()">
+            <span class="error"></span><br />
+
+            <input type="button" class="btn btn-primary col-sm-1" onclick="Next1(); validate1()"value="Next">
+            <!-- <button class="btn btn-primary col-sm-1" onclick="Next1(); validate1()">Next</button> -->
+        </div>
+
+
+
+        <div id="second">
+            <div class="row mb-3">
+                <h3 class="h3">Account Information</h3>
+                <hr /> <br>
+
+                <label class="fw-bold col-sm-2 col-form-label" for="education">Education level</label>
+                <div class="col-sm-10">
+                    <select id="education" class="form-select">
+                        <option value="High school or Equivalant" selected>High school or Equivalant</option>
+                        <option value="Diploma">Diploma</option>
+                        <option value="Higher National Diploma">Higher National Diploma</option>
+                        <option value="Bachelor's">Bachelor's</option>
+                        <option value="Master's">Master's</option>
+                        <option value="Doctorate">Doctorate</option>
+                    </select><br>
+                </div>
+
+                <label class="fw-bold col-sm-2 col-form-label" for="study">Field of Study</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control " id="study"
+                        placeholder="e.g. Computer Science, intellectual property, Psychlogy." onblur="validate2()">
+                    <span class="error2"></span><br />
+                </div>
+
+                <label class="fw-bold col-sm-2 col-form-label" for="university">University</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="university" onblur="validate2()">
+                    <span class="error2"></span><br />
+                </div>
+
+                <label class="fw-bold col-sm-2 col-form-label">Time Period</label>
+                <div class="col-sm-1">
+                    <select id="study_period_from" class="form-select">
+                        <option value="2014" selected>2014</option>
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                    </select><br>
+                </div>
+                <label class="fw-bold col-sm-1 col-form-label">To</label>
+                <div class="col-sm-1">
+                    <select id="study_period_to" class="form-select">
+                        <option value="2014">2014</option>
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018" selected>2018</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                    </select>
+                </div>
+
+            </div>
+            <input type="button" class="btn btn-secondary col-sm-1" onclick="Back1()" value="Back">
+            <!-- <button class="btn btn-secondary col-sm-1" onclick="Back1()">Back</button> -->
+            <input type="button" class="btn btn-primary col-sm-1" onclick="Next2(); validate2()"  value="Next">
+            <!-- <button class="btn btn-primary col-sm-1" onclick="Next2(); validate2()">Next</button> -->
+        </div>
+
+
+
+
+        <div id="third">
+            <div class="row mb-3">
+                <h3 class="h3">Personal Information</h3>
+                <hr /> <br>
+                <span style="color:rgb(7, 187, 7);visibility: hidden;font-weight: 700;" id="data_stored_msg"> Successfully data stored in local storage </span>
+
+                <label class="fw-bold col-sm-2 col-form-label" for="job_title">Job Title</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control " id="job_title"
+                        placeholder="e.g. Java/php developer" onblur="validate3()">
+                    <span class="error3"></span><br />
+                </div>
+
+                <label class="fw-bold col-sm-2 col-form-label" for="company">Company</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control " id="company"
+                        onblur="validate3()">
+                    <span class="error3"></span><br />
+                </div>
+
+                <label class="fw-bold col-sm-2 col-form-label" for="city">City</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="city" onblur="validate3()">
+                    <span class="error3"></span><br />
+                </div>
+
+                <label class="fw-bold col-sm-2 col-form-label">Time Period</label>
+                <div class="col-sm-1">
+                    <select id="job_period_from" class="form-select">
+                        <option value="2014">2014</option>
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                        <option value="2019"  selected>2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                    </select><br>
+                </div>
+                <label class="fw-bold col-sm-1 col-form-label">To</label>
+                <div class="col-sm-1">
+                    <select id="job_period_to" class="form-select">
+                        <option value="2014">2014</option>
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018" >2018</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021" selected>2021</option>
+                    </select><br>
+                </div><br>
+
+            </div>
+            <input type="button" class="btn btn-secondary col-sm-1" onclick="Back2();" value="Back" >
+            <!-- <button class="btn btn-secondary col-sm-1" onclick="Back2();">Back</button> -->
+            <input type="button" class="btn btn-success col-sm-1" onclick="Submit(); validate3()" value="Submit">
+            <!-- <button class="btn btn-success col-sm-1" onclick="Submit(); validate3()">Submit</button> -->
+        </div>
+
+
+
+
+        </form>
+    </div>
+    
+
+    <script>
+        var flag = false;
+        var first = document.getElementById("first");
+        var second = document.getElementById("second");
+        var third = document.getElementById("third");
+
+        
+        var username = document.getElementById('username');
+        var password = document.getElementById('password');
+        var con_password = document.getElementById('con_password');
+        var error = document.getElementsByClassName('error');
+        
+        function validate1() {
+            if (username.value === "") {
+                flag = false;
+                error[0].innerHTML = "username is required <br/>";
+                username.style.border = '2px solid #bf2615';
+            } else if (!(/([\w]){6,}/g.test(username.value))) {
+                flag = false;
+                error[0].innerHTML = "Please enter at least 6 characters. <br/>";
+                username.style.border = '2px solid #bf2615';
+            } else {
+                flag = true;
+                error[0].innerHTML = "";
+                username.style.border = '';
+            }
+
+            if (password.value === "") {
+                flag = false;
+                error[1].innerHTML = "password required <br/>";
+                password.style.border = '2px solid #bf2615';
+            } else {
+                flag = true;
+                error[1].innerHTML = "";
+                password.style.border = "";
+            }
+            if ((con_password.value !== password.value)) {
+                flag = false;
+                error[2].innerHTML = "password don't match <br/>";
+                con_password.style.border = '2px solid #bf2615';
+            } else if (con_password.value == "") {
+                flag = false;
+                error[2].innerHTML = "password don't match <br/>";
+                con_password.style.border = '2px solid #bf2615';
+            } else {
+                flag = true;
+                error[2].innerHTML = "";
+                con_password.style.border = "";
+            }
+        }
+
+        function Next1() {
+            if (flag) {
+                first.style.display = "none";
+                second.style.display = "inline";
+            }
+
+        }
+
+
+
+        var flag2 = false;
+        var education = document.getElementById('education');
+        var study = document.getElementById('study');
+        var university = document.getElementById('university');
+        var study_period_from = document.getElementById('study_period_from');
+        var study_period_to = document.getElementById('study_period_to');
+        var error2 = document.getElementsByClassName('error2');
+        
+        function validate2() {
+            if (study.value === "") {
+                flag2 = false;
+                error2[0].innerHTML = "This field is required <br>";
+                study.style.border = '2px solid #bf2615';
+            } else {
+                flag2 = true;
+                error2[0].innerHTML = "";
+                study.style.border = "";
+            }
+            if (university.value === "") {
+                flag2 = false;
+                error2[1].innerHTML = "This field is required <br>";
+                university.style.border = '2px solid #bf2615';
+            } else {
+                flag2 = true;
+                error2[1].innerHTML = "";
+                university.style.border = "";
+            }
+        }
+
+
+        function Next2() {
+            if (flag2) {
+                second.style.display = "none";
+                third.style.display = "inline";
+            }
+        }
+        function Back1() {
+                first.style.display = "inline";
+                second.style.display = "none";
+        }
+
+
+
+        var flag3 = false;
+        var job_title = document.getElementById('job_title');
+        var company = document.getElementById('company');
+        var city = document.getElementById('city');
+        var job_period_from = document.getElementById('job_period_from');
+        var job_period_to = document.getElementById('job_period_to');
+        var error3 = document.getElementsByClassName('error3');
+        
+        function validate3(){
+            if(job_title.value === ""){
+                flag3 = false;
+                error3[0].innerHTML = "This field is required <br>";
+                job_title.style.border = '2px solid #bf2615';
+            }else{
+                flag3 = true;
+                error3[0].innerHTML = "";
+                job_title.style.border = '';
+            }
+
+            if(company.value === ""){
+                flag3 = false;
+                error3[1].innerHTML = "This field is required <br>";
+                company.style.border = '2px solid #bf2615';
+            }else{
+                flag3 = true;
+                error3[1].innerHTML = "";
+                company.style.border = '';
+            }
+
+            if(city.value === ""){
+                flag3 = false;
+                error3[2].innerHTML = "This field is required <br>";
+                city.style.border = '2px solid #bf2615';
+            }else{
+                flag3 = true;
+                error3[2].innerHTML = "";
+                city.style.border = '';
+            }
+        }
+        function Submit(){
+            var data_stored_msg = document.getElementById('data_stored_msg');
+            if(flag3){
+                // Store data in local storage
+                var userdata = {
+                    username : username.value,
+                    password : password.value,
+                    education_level :education.value,
+                    study : study.value,
+                    university : university.value,
+                    study_period_from : study_period_from.value,
+                    study_period_to : study_period_to.value,
+                    job_title : job_title.value,
+                    company : company.value,
+                    city : city.value,
+                    job_period_from : job_period_from.value,
+                    job_period_to : job_period_to.value
+                }
+                window.localStorage.setItem(username.value,JSON.stringify(userdata));
+                data_stored_msg.style.visibility = "visible";
+            }
+            
+        }
+        function Back2() {
+                second.style.display = "inline";
+                third.style.display = "none";
+        }
+    </script>
+
+</body>
+
+</html>
